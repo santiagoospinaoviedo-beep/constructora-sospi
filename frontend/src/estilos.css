@@ -1,0 +1,395 @@
+/* ---------- Estilo Liquid Glass (Inspiración iOS 26 / VisionOS) ---------- */
+:root {
+  --glass-bg: rgba(255, 255, 255, 0.35);
+  --glass-border: rgba(255, 255, 255, 0.5);
+  --glass-highlight: rgba(255, 255, 255, 0.8);
+  --text-main: #1a1a24;
+  --text-muted: #4a4a5a;
+  --accent: #007aff;
+  --shadow-liquid: 0 16px 40px rgba(0, 0, 0, 0.08);
+  --radius-liquid: 32px;
+  --radius-btn: 999px;
+  --font-apple: "SF Pro Display", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+}
+
+* { margin: 0; padding: 0; box-sizing: border-box; }
+
+/* Fondo fluido animado (Aurora / Liquid Mesh) */
+body {
+  font-family: var(--font-apple);
+  color: var(--text-main);
+  background-color: #f2f2f7;
+  min-height: 100vh;
+  overflow-x: hidden;
+}
+
+body::before {
+  content: "";
+  position: fixed;
+  top: -50%; left: -50%; width: 200%; height: 200%;
+  background: 
+    radial-gradient(circle at 20% 30%, rgba(138, 203, 255, 0.6) 0%, transparent 40%),
+    radial-gradient(circle at 80% 20%, rgba(255, 185, 210, 0.6) 0%, transparent 40%),
+    radial-gradient(circle at 50% 80%, rgba(175, 150, 255, 0.5) 0%, transparent 40%);
+  z-index: -1;
+  animation: aurora 15s ease-in-out infinite alternate;
+}
+
+@keyframes aurora {
+  0% { transform: rotate(0deg) scale(1); }
+  50% { transform: rotate(10deg) scale(1.05); }
+  100% { transform: rotate(-5deg) scale(0.95); }
+}
+
+a { color: var(--accent); text-decoration: none; transition: 0.3s ease; }
+
+.container { max-width: 1100px; margin: 0 auto; padding: 0 24px; }
+.section { padding: 100px 0; }
+
+.section-title {
+  font-size: 3rem;
+  font-weight: 800;
+  letter-spacing: -0.05em;
+  text-align: center;
+  margin-bottom: 60px;
+  background: linear-gradient(135deg, #1a1a24, #5a5a6a);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+/* ---------- Navbar Liquid Glass ---------- */
+.navbar {
+  background: rgba(255, 255, 255, 0.2);
+  backdrop-filter: blur(40px) saturate(200%);
+  -webkit-backdrop-filter: blur(40px) saturate(200%);
+  border-bottom: 1px solid var(--glass-border);
+  position: sticky;
+  top: 0;
+  z-index: 1000;
+  box-shadow: 0 4px 30px rgba(0, 0, 0, 0.05);
+}
+
+.navbar-container { display: flex; align-items: center; justify-content: space-between; height: 70px; }
+
+.navbar-logo { font-size: 1.5rem; font-weight: 700; color: var(--text-main); letter-spacing: -0.03em; }
+
+.navbar-menu { display: flex; list-style: none; gap: 2.5rem; align-items: center; }
+.navbar-menu a { color: var(--text-muted); font-weight: 500; letter-spacing: -0.01em; }
+.navbar-menu a:hover, .navbar-menu a.active { color: var(--text-main); text-shadow: 0 0 15px rgba(255,255,255,0.8); }
+
+.nav-admin {
+  background: rgba(255, 255, 255, 0.5);
+  border: 1px solid var(--glass-border);
+  padding: 8px 18px;
+  border-radius: var(--radius-btn);
+  color: var(--text-main) !important;
+  backdrop-filter: blur(10px);
+  box-shadow: 0 4px 12px rgba(0,0,0,0.05);
+}
+.nav-admin:hover { background: rgba(255, 255, 255, 0.8); transform: translateY(-2px); }
+
+/* ---------- Botones (Flotantes y Acristalados) ---------- */
+.btn {
+  display: inline-block;
+  padding: 14px 28px;
+  border: 1px solid var(--glass-border);
+  border-radius: var(--radius-btn);
+  font-size: 1.05rem;
+  font-weight: 600;
+  cursor: pointer;
+  text-align: center;
+  transition: all 0.4s cubic-bezier(0.2, 0.8, 0.2, 1);
+  backdrop-filter: blur(20px);
+  -webkit-backdrop-filter: blur(20px);
+}
+
+.btn-primary {
+  background: rgba(0, 122, 255, 0.85);
+  color: white;
+  border-color: rgba(255,255,255,0.3);
+  box-shadow: 0 10px 25px rgba(0, 122, 255, 0.3), inset 0 2px 5px rgba(255,255,255,0.4);
+}
+.btn-primary:hover {
+  background: rgba(0, 122, 255, 1);
+  transform: translateY(-4px) scale(1.03);
+  box-shadow: 0 15px 35px rgba(0, 122, 255, 0.4), inset 0 2px 5px rgba(255,255,255,0.5);
+}
+
+.btn-secondary {
+  background: var(--glass-bg);
+  color: var(--text-main);
+  box-shadow: 0 8px 20px rgba(0,0,0,0.04), inset 0 2px 5px rgba(255,255,255,0.6);
+}
+.btn-secondary:hover {
+  background: rgba(255, 255, 255, 0.7);
+  transform: translateY(-4px) scale(1.03);
+}
+
+.btn-danger { background: rgba(255, 59, 48, 0.85); color: white; border-color: rgba(255,255,255,0.2); }
+.btn-sm { padding: 8px 16px; font-size: 0.9rem; }
+
+/* ---------- Hero Liquid ---------- */
+.hero {
+  position: relative;
+  min-height: 75vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+}
+
+.hero-content {
+  background: var(--glass-bg);
+  backdrop-filter: blur(50px) saturate(200%);
+  -webkit-backdrop-filter: blur(50px) saturate(200%);
+  border: 1px solid var(--glass-border);
+  padding: 60px 40px;
+  border-radius: var(--radius-liquid);
+  box-shadow: var(--shadow-liquid), inset 0 2px 10px rgba(255,255,255,0.6);
+  max-width: 850px;
+  position: relative;
+  overflow: hidden;
+}
+
+/* Brillo diagonal interno en el Hero */
+.hero-content::after {
+  content: "";
+  position: absolute;
+  top: -50%; left: -50%;
+  width: 200%; height: 200%;
+  background: linear-gradient(45deg, transparent 40%, rgba(255,255,255,0.4) 50%, transparent 60%);
+  animation: glassShine 8s infinite;
+  pointer-events: none;
+}
+
+@keyframes glassShine {
+  0% { transform: translateX(-100%) translateY(-100%); }
+  20%, 100% { transform: translateX(100%) translateY(100%); }
+}
+
+.hero-content h1 {
+  font-size: 5rem;
+  font-weight: 800;
+  letter-spacing: -0.06em;
+  line-height: 1;
+  margin-bottom: 24px;
+  background: linear-gradient(135deg, #000000, #434350);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+.hero-content p {
+  font-size: 1.6rem;
+  color: var(--text-muted);
+  margin-bottom: 40px;
+  font-weight: 500;
+  letter-spacing: -0.02em;
+}
+
+/* ---------- Tarjetas Liquid Glass ---------- */
+.cards-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
+  gap: 40px;
+}
+
+.card {
+  background: var(--glass-bg);
+  backdrop-filter: blur(35px) saturate(180%);
+  -webkit-backdrop-filter: blur(35px) saturate(180%);
+  border: 1px solid var(--glass-border);
+  border-radius: var(--radius-liquid);
+  box-shadow: var(--shadow-liquid), inset 0 2px 6px rgba(255,255,255,0.5);
+  overflow: hidden;
+  transition: all 0.5s cubic-bezier(0.2, 0.8, 0.2, 1);
+  position: relative;
+}
+
+.card:hover {
+  transform: translateY(-12px) scale(1.02);
+  box-shadow: 0 25px 50px rgba(0,0,0,0.12), inset 0 2px 10px rgba(255,255,255,0.8);
+  background: rgba(255, 255, 255, 0.5);
+}
+
+.card-image { 
+  width: 100%; 
+  height: 240px; 
+  object-fit: cover; 
+  border-radius: var(--radius-liquid) var(--radius-liquid) 0 0;
+  mask-image: linear-gradient(to bottom, black 80%, transparent 100%);
+  -webkit-mask-image: linear-gradient(to bottom, black 80%, transparent 100%);
+}
+
+.card-body { padding: 30px; margin-top: -20px; position: relative; z-index: 2; }
+.card-body h3 { font-size: 1.5rem; font-weight: 700; letter-spacing: -0.03em; margin-bottom: 8px; }
+.card-ciudad, .card-tipo, .card-detalles { color: var(--text-muted); font-size: 0.95rem; font-weight: 500; }
+.card-precio { font-size: 1.4rem; font-weight: 700; color: var(--text-main); margin: 20px 0; }
+.card-body .btn { width: 100%; }
+
+/* ---------- Formularios Acristalados ---------- */
+.interest-form, .admin-form {
+  background: var(--glass-bg);
+  backdrop-filter: blur(40px) saturate(200%);
+  -webkit-backdrop-filter: blur(40px) saturate(200%);
+  padding: 40px;
+  border-radius: var(--radius-liquid);
+  box-shadow: var(--shadow-liquid), inset 0 2px 8px rgba(255,255,255,0.6);
+  border: 1px solid var(--glass-border);
+}
+
+.form-group label {
+  display: block;
+  font-size: 0.9rem;
+  font-weight: 600;
+  color: var(--text-muted);
+  margin-bottom: 10px;
+  padding-left: 5px;
+}
+
+.form-group input, .form-group select, .form-group textarea {
+  width: 100%;
+  padding: 16px 20px;
+  border: 1px solid rgba(255,255,255,0.4);
+  border-radius: 18px;
+  font-size: 1.05rem;
+  font-family: var(--font-apple);
+  background: rgba(255, 255, 255, 0.4);
+  color: var(--text-main);
+  box-shadow: inset 0 2px 5px rgba(0,0,0,0.02);
+  transition: all 0.3s ease;
+}
+
+.form-group input:focus, .form-group select:focus, .form-group textarea:focus {
+  outline: none;
+  background: rgba(255, 255, 255, 0.7);
+  border-color: rgba(255,255,255,0.8);
+  box-shadow: 0 0 0 5px rgba(0, 122, 255, 0.15), inset 0 2px 5px rgba(0,0,0,0.01);
+}
+
+/* ---------- Animaciones Scroll ---------- */
+.revelar {
+  opacity: 0;
+  transform: translateY(50px) scale(0.95);
+  transition: opacity 1s cubic-bezier(0.2, 0.8, 0.2, 1), transform 1s cubic-bezier(0.2, 0.8, 0.2, 1);
+}
+.revelado { opacity: 1; transform: translateY(0) scale(1); }
+
+/* ---------- Extras y Tablas ---------- */
+.badge {
+  padding: 6px 14px;
+  border-radius: var(--radius-btn);
+  font-size: 0.8rem;
+  font-weight: 700;
+  background: rgba(255, 255, 255, 0.6);
+  color: var(--text-muted);
+  border: 1px solid var(--glass-border);
+  box-shadow: 0 2px 5px rgba(0,0,0,0.02);
+}
+.badge-success { background: rgba(52, 199, 89, 0.2); color: #1e7034; border-color: rgba(52, 199, 89, 0.3); }
+
+.admin-table {
+  width: 100%;
+  background: var(--glass-bg);
+  backdrop-filter: blur(30px);
+  -webkit-backdrop-filter: blur(30px);
+  border-radius: var(--radius-liquid);
+  overflow: hidden;
+  box-shadow: var(--shadow-liquid), inset 0 2px 8px rgba(255,255,255,0.6);
+  border: 1px solid var(--glass-border);
+  border-collapse: collapse;
+}
+
+.admin-table th, .admin-table td { 
+  padding: 18px; 
+  border-bottom: 1px solid rgba(0,0,0,0.05); 
+  text-align: left; 
+}
+.admin-table th { 
+  background: rgba(255,255,255,0.3); 
+  font-weight: 700; 
+  color: var(--text-muted); 
+  text-transform: uppercase;
+  font-size: 0.8rem;
+  letter-spacing: 0.05em;
+}
+
+.footer {
+  background: rgba(255, 255, 255, 0.1);
+  backdrop-filter: blur(20px);
+  padding: 60px 0 30px;
+  border-top: 1px solid var(--glass-border);
+  text-align: center;
+  color: var(--text-muted);
+  font-size: 0.9rem;
+}
+/* ---------- Corrección del Panel de Administración (Liquid Glass) ---------- */
+
+.admin-layout {
+  display: flex;
+  flex-direction: column;
+  gap: 30px;
+  padding: 40px 20px;
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+/* Barra superior de administración alineada hacia la derecha */
+.admin-sidebar {
+  background: var(--glass-bg);
+  backdrop-filter: blur(30px) saturate(180%);
+  -webkit-backdrop-filter: blur(30px) saturate(180%);
+  border: 1px solid var(--glass-border);
+  padding: 20px 30px;
+  border-radius: var(--radius-liquid);
+  box-shadow: var(--shadow-liquid);
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 20px;
+}
+
+.admin-sidebar h2 {
+  font-size: 1.4rem;
+  font-weight: 700;
+  color: var(--text-main);
+  margin: 0;
+}
+
+/* Alinea los enlaces hacia la derecha con espacio fluido */
+.admin-sidebar nav {
+  display: flex;
+  gap: 15px;
+  align-items: center;
+  margin-left: auto; /* Empuja los enlaces completamente a la derecha */
+}
+
+.admin-sidebar nav a {
+  padding: 10px 20px;
+  border-radius: var(--radius-btn);
+  background: rgba(255, 255, 255, 0.4);
+  color: var(--text-main);
+  font-weight: 600;
+  font-size: 0.95rem;
+  border: 1px solid var(--glass-border);
+  transition: all 0.3s ease;
+}
+
+.admin-sidebar nav a:hover, 
+.admin-sidebar nav a.active {
+  background: var(--accent);
+  color: white;
+  box-shadow: 0 8px 20px rgba(0, 122, 255, 0.3);
+}
+
+.admin-content {
+  width: 100%;
+}
+
+.admin-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 30px;
+}
